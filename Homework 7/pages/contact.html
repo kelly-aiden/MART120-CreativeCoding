@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Contact form page" />
+        <meta name="author" content="Aiden Kelly" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Contact</title>
+
+        <link rel="stylesheet" href="../css/style.css" />
+
+        <link 
+            rel="stylesheet" 
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+            crossorigin="anonymous">
+
+        <script 
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+            crossorigin="anonymous">
+        </script>
+
+
+        <style>
+            body {
+                background-color: #281f2d;
+            }
+
+            .contact-container {
+                max-width: 600px;
+                margin: 50px auto;
+                padding: 30px;
+                background-color:#f5d7ecf6;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px rgba(246, 1, 66, 0.78);
+            }
+
+            h1 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .form-check {
+                margin-top: 15px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="header">
+            <div class="header-tab"><a href="../index.html">Home</a></div>
+            <div class="header-tab"><a href="./story.html">Story</a></div>
+            <div class="header-tab"><a href="./contact.html">Contact</a></div>
+        </div>
+        <br/>
+
+        <div class="contact-container">
+            <h1>Contact Me</h1>
+            <form>
+                <div class="mb-3">
+                    <label for="nameInput" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="nameInput" placeholder="Your Name" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" required />
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="termsCheck" required />
+                    <label class="form-check-label" for="termsCheck">
+                        I accept the terms and conditions.
+                    </label>
+                </div>
+
+                <br/>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <br/><br/>
+    </body>
+</html>
