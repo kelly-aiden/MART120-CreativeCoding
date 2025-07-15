@@ -1,0 +1,41 @@
+.header {
+    background-color:#55057d;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.header-tab {
+    display: inline-block;
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.header-tab a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header-tab a:hover {
+    text-decoration: underline;
+}
+
+.section {
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 6px #f6002dcd;
+}
+
+#main-title {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#hobbies,
+#restaurants,#websites {
+    background-color: #f5d7ecf6;
+}
+
+.error {
+    border: 2px solid #f6002dcd !important;
+}
