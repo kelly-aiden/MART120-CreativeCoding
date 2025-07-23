@@ -2,11 +2,11 @@
 var playerX = 50;
 var playerY = 350;
 
-var obs1X;
-var obs1Y;
-var obs2X;
-var obs2Y;
-var oldTime = 0;
+var obsX = [];
+var obsY =[];
+var obsSize = [];
+var direction = [];
+var obsColor =[[66, 173, 245],[45, 37, 250],[212, 245, 66],[250, 37, 62],[250, 115, 37]];   
 
 var mousex = -200;
 var mousey = -200;
@@ -16,16 +16,16 @@ function setup() {
   createCanvas(900, 700);
   noFill();
   
-  obs1X = random(50, 750);
-  obs1Y = random(50, 550);
-  
-  obs2X = random(50, 750);
-  obs2Y = random(50, 550);
+  for (var i = 0; i < 5; i++) {
+      obsX[i] = floor(random(100, 750));
+      obsY[i] = floor(random(50, 550));
+      obsSize[i] = floor(random(15,150));
+      direction[i] = floor(random(1,4.9))
+    }
 }
 
 function draw() {
   drawBackground();
-
   if (checkWinCondition()) {
     drawWinScreen();
     drawBorder()
@@ -34,8 +34,7 @@ function draw() {
     drawExit();
     drawBorder()
     moveObstacles();
-    drawObstacle1();
-    drawObstacle2();
+    drawObstacles()
     drawMouseObstacle();
   }
 }
@@ -74,7 +73,7 @@ function drawExit() {
 
 //Checks the player's position and whether that is in the exit
 function checkWinCondition() {
-  return playerX > 800 && playerY < 50;
+  return playerX > 750 && playerY < 50;
 }
 
 //Draws the border around the screen
@@ -97,31 +96,41 @@ function drawWinScreen() {
   text("YOU WIN!", 50, 350);
 }
 
-//draws the red triangle
-function drawObstacle1() {
-  fill(230, 98, 98);
+//draws the 5 squares
+function drawObstacles() {
   stroke(111, 43, 214);
   strokeWeight(8)
-  triangle(obs1X,obs1Y,obs1X+100,obs1Y-150,obs1X+200,obs1Y);
-}
-
-//draws the blue square
-function drawObstacle2() {
-  fill(102, 166, 255);
-  stroke(111, 43, 214);
-  strokeWeight(8)
-  square(obs2X,obs2Y,150)
-}
-
-//moves the obstacles randomly to a new position in the screen every 2 seconds
-function moveObstacles() {
-  if (millis() - oldTime > 2000) {
-    obs1X = random(50, 750);
-    obs1Y = random(50, 550);
-    obs2X = random(50, 750);
-    obs2Y = random(50, 550);
-    oldTime = millis();
+  for (var i = 0; i < 5; i++) {
+    fill(obsColor[i]); 
+    square(obsX[i],obsY[i],obsSize[i]);
   }
+}
+
+//moves the squares in a randomly asssigned direction around the screen, teleporting when they go off screen
+function moveObstacles(){
+    for (var i = 0; i < 5; i++) {    
+      if (direction[i] == 1){
+        if (obsY[i] > 690){
+          obsY[i] = 0;
+        }
+        obsY[i] += 4;
+      } else if (direction[i] == 2){
+        if (obsX[i] > 890){
+          obsX[i] = 0;
+        }
+        obsX[i] += 4;
+      } else if (direction[i] == 3){
+        if (obsY[i] < 10){
+          obsY[i] = 700;
+        }
+        obsY[i] -= 4;
+      } else if (direction[i] == 4){
+        if (obsX[i] < 10){
+          obsX[i] = 900;
+        }
+        obsX[i] -= 4;
+      }
+    }
 }
 
 //draws the pink oval
